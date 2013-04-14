@@ -1,0 +1,46 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.input-prepend .add-on{
+	margin-right:-5px; 
+}
+
+.topic_row{
+	border-top: 1px dotted #CCCCCC;
+	padding:4px 0;
+}
+
+.bottom_line{
+	border-bottom: 1px dotted #CCCCCC;
+}
+
+.top_line{
+	border-top: 1px dotted #CCCCCC;
+}
+
+.small_photo{
+	display: inline-block;
+	float: left;
+	/*border: 1px dotted #CCCCCC;*/
+}
+.small_photo img{
+	width:50px;
+	height: 50px;
+}
+.hidden{
+	display: hidden;
+}
+textarea{
+	resize: none;
+}
+
+#news div.alert{
+    margin-left: 0;
+    margin-top: 5px;
+}

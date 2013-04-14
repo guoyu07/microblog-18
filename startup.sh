@@ -1,0 +1,1 @@
+ cd /home/huhai/node_workspace && supervisor -V --debug-brk -p 1000 -w microblog -i microblog/public/*.js -x node microblog/app.js 

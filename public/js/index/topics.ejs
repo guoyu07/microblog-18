@@ -1,0 +1,20 @@
+<%
+for(var i = 0; i < posts.length; i++){
+%>
+<div class="row offset20">
+  <div class="span12 topic_row">
+     <div class="small_photo">
+     	<img src="/images/default_small_photo.gif">
+     </div>
+     <div class="span11">
+     	<span>
+     	<% if(posts[i].user) { %>
+     	<a href="#" class="post_user"><strong><%= posts[i].user.name %></strong></a>
+     	：
+     	<% } %>
+     	</span>
+     	<%= posts[i].content %>
+     </div>
+  </div>
+</div>
+<%}%>

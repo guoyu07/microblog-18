@@ -1,0 +1,22 @@
+<div class="span10">
+    <form class="form-horizontal" style="width:538px;" action="/authed/topic/add" method='post'>
+        <div class="control-group">
+            <textarea id="content" class="input-xlarge" style="width:100%;" name="content" placeholder="说说你的新鲜事儿，不要超过140字哦" oninput="contentChange(event)" onpropertychange="contentChange(event)"></textarea>
+        </div>
+        <div class="form-action pull-right">
+            <button id="btn_publish" type="button" class="btn" disabled="disabled" onclick="publish();">发布</button>
+        </div>
+        <%
+         var className ='';
+         var error = locals.flash('error');
+         if(!(null != error && '' != error)){
+            className = 'hidden';
+         }
+        %>
+        <div id="content_info" class="span8 alert <%=className %>" style="margin-left:0;padding-bottom:0;">
+        </div>
+    </form>
+</div>
+<div id="news" class="span10" style="clean:both;margin-left:0;padding-bottom:0;"></div>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/js/home/home.js"></script>

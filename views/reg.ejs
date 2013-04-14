@@ -1,0 +1,65 @@
+<%
+	var users = locals.flash('user'); 
+	var user = (null != users ? users[0] : null);
+%>
+<ul class="breadcrumb">
+	<li>
+		<a href="#">首页</a>
+		<span class="divider">/</span>
+	</li>
+	<li>
+		<a href="#">注册</a>
+	</li>
+</ul>
+<form class="well form-horizontal" action="/doReg" method="post">
+	<div class="control-group">
+		<label class="control-label" for="email">邮件地址</label>
+		<div class="controls">
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-envelope"></i></span>
+				<input type="text" id="email" name='user.email' placeholder="请输入您的邮件地址" value="<%= null != user ? user.email : '' %>"/>
+				<span class="help-inline">用于登录、找回密码，请正确填写</span>
+			</div>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="name">昵称</label>
+		<div class="controls">
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-user"></i></span>
+				<input type="text" id="name" name='user.name' placeholder="昵称" value="<%= null != user ? user.name : '' %>"/>
+			</div>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="password">密码</label>
+		<div class="controls">
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-lock"></i></span>
+					<input type="password" id="password" name='user.password' placeholder="密码"/>
+				</div>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="confirmPassword">确认密码</label>
+		<div class="controls">
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-check"></i></span>
+				<input type="password" id="confirmPassword" name='user.confirmPassword' placeholder="确认密码"/>
+				<span class="help-inline">请保持确认密码和密码一致，以确认您输入无误</span>
+			</div>
+		</div>
+	</div>
+	<div class="form-actions">
+		<button class="btn btn-primary" type="submit">立即注册</button>
+		<a href="/login" style="position:relative;top:5px;left:10px;">已有账号，立即登录</a>
+	</div>
+	<%
+	 var error = locals.flash('error');
+	 if(null != error && '' != error){ 
+	%>
+	<div class="alert alert-error">
+	  <%= error %>
+	</div>
+	<% } %>	
+</form>
