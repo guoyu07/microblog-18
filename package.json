@@ -13,6 +13,9 @@
 	  "connect-mongo": "*",
 	  "mongodb": "*",
     "socket.io": "*",
-    "util": "*"
+    "util": "*",
+    "extend": "*",
+    "express-dot": "0.1.2", //modify by huhai
+    "express-ejs-layouts": "0.3.1"//modify by huhai
   }
 }

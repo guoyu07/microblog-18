@@ -153,7 +153,7 @@ module.exports = function(app){
 
 	app.get("/dot", function(req, res){
 		console.log('dot test');
-		res.render("dotTest.dot", {title: 'dot'});//, {layout: 'layout.dot'}
+		res.render("dotTest.dot", {title: 'dot', layout:false});//, {layout: 'layout.dot'}
 //        res.render("dotTest.dot", {layout: false});
 	});
 	

@@ -19,11 +19,6 @@ var express = require('express')
   , ejs = require('ejs')
   ;
 
-  // dot.process("./views");
-  // var dotEngine = {compile: function(str, options){
-  //   return dot.template(str);
-  // }};
-
 var app = express();
 var settings = require('./settings');
 var MongoStore = require('connect-mongo')(express);
@@ -33,10 +28,27 @@ var memoryStore = new MemoryStore();
 //    db: settings.db
 //});//new MemoryStore();
 
-var socketPort = 8888 ;
+var socketPort = 8888;
 var conns = [];
 var context = {};
 expressLayouts.register('ejs');
+
+doT.setGlobals({
+    layout: false,
+    partialCache: false
+});
+
+doT.setTemplateSettings({
+    evaluate:    /\<\%([\s\S]+?\}?)\%\>/g,
+    interpolate: /\<\%=([\s\S]+?)\%\>/g,
+    encode:      /\<\%!([\s\S]+?)\%\>/g,
+    use:         /\<\%#([\s\S]+?)\%\>/g,
+    useParams:   /(^|[^\w$])def(?:\.|\[[\'\"])([\w$\.]+)(?:[\'\"]\])?\s*\:\s*([\w$\.]+|\"[^\"]+\"|\'[^\']+\'|\{[^\}]+\})/g,
+    define:      /\<\%##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\%\>/g,
+    defineParams:/^\s*([\w$]+):([\s\S]+)/,
+    conditional: /\<\%\?(\?)?\s*([\s\S]*?)\s*\%\>/g,
+    iterate:     /\<\%~\s*(?:\%\>|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\%\>)/g
+});
 
 app.configure(function()//noinspection JSValidateTypes
 {

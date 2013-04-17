@@ -1,1 +1,14 @@
-dot test page.
+<!DOCTYPE html>
+<html>
+    <head>
+        <%#def.load('/views/common/common.inc')%>
+        <title>dot test</title>
+    </head>
+    <body>
+        <%#def.load('/views/common/head-nav.html')%>
+        <div id="container" class="container">
+             dot test
+        </div>
+        <%#def.load('/views/common/foot.html')%>
+    </body>
+</html>
