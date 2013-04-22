@@ -10,12 +10,14 @@
     "ejs": "*",
 	  "express-partials": "*",
 	  "connect": "*",
-	  "connect-mongo": "*",
+	  "connect-redis": "*",
 	  "mongodb": "*",
     "socket.io": "*",
     "util": "*",
     "extend": "*",
-    "express-dot": "0.1.2", //modify by huhai
-    "express-ejs-layouts": "0.3.1"//modify by huhai
+    "redis" : "*",
+    "hiredis" : "*",
+    "express-dot": "0.1.2",
+    "express-ejs-layouts": "0.3.1"
   }
 }

@@ -1,5 +1,5 @@
 var util = require("util");
-var mongodb = require('./db');
+var mongodb = require('./db').mongodb;
 
 function TopicDAO(){
 
