@@ -3,7 +3,6 @@
  * Module dependencies.
  */
 var util = require('util');
-var emitter = require('events').EventEmitter();
 
 var express = require('express'),
     routes = require('./routes'),
@@ -17,17 +16,15 @@ var express = require('express'),
     expressLayouts = require('express-ejs-layouts'),
     doT = require('express-dot'),
     ejs = require('ejs'),
-    settings = require('./settings');
+    settings = require('./settings'),
+    RedisStore = require('connect-redis')(express);
 
-var app = express();
-var settings = require('./settings');
-var RedisStore = require('connect-redis')(express);
-var sessionMap = [];
-var memoryStore = new RedisStore(settings.redis);//new MemoryStore();
+var app = express(),
+    sessionMap = [],
+    conns = [],
+    context = {},
+    memoryStore = new RedisStore(settings.redis);//new MemoryStore();
 
-var socketPort = 8888;
-var conns = [];
-var context = {};
 expressLayouts.register('ejs');
 
 doT.setGlobals({
@@ -157,16 +154,18 @@ server.listen(app.get('port'), function () {
 sio.sockets.on('connection', function (socket) {
     "use strict";
     console.log('web socket connection established ...');
+    var user = '';
     if (socket.handshake.session) {
         conns[socket.handshake.session.id] = socket;
         if (socket.handshake.session.user) {
+            user = socket.handshake.session.user;
             socket.broadcast.emit('user connected', '大家好， ' + socket.handshake.session.user.name + ' 回来了');
         }
     }
 
     socket.on('disconnect', function () {
-        console.log('user disconnected');
-        sio.sockets.emit('user disconnected');
+        console.log('[' + user.name + ']' + '离开了');
+        sio.sockets.emit('user message', '[' + user.name + ']' + '离开了');
     });
 
     socket.on('user message', function (msg) {
