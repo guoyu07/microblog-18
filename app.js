@@ -65,7 +65,8 @@ app.configure(function () {//noinspection JSValidateTypes
     app.use(express.cookieParser());
     app.use(express.session({
         secret: settings.cookieSecret,
-        store: memoryStore
+        store: memoryStore,
+        key: settings.sessionid_key
     }));
 
 
@@ -120,7 +121,7 @@ function parseCookie(cookiesStr) {
 sio.set('authorization', function (handshakeData, callback) {
     "use strict";
     var cookie = parseCookie(handshakeData.headers.cookie),
-        connet_sid = querystring.unescape(cookie['connect.sid']),
+        connet_sid = querystring.unescape(cookie[settings.sessionid_key]),
         matches = connet_sid.match("s:([^.]+)"),
         sid = null;
     if (null !== matches) {
@@ -170,6 +171,11 @@ sio.sockets.on('connection', function (socket) {
 
     socket.on('user message', function (msg) {
         console.log('user message : ' + msg);
+        //socket.emit('user message', msg);
+    });
+
+    socket.on('user leave', function (msg) {
+        console.log('someone leave : ' + msg);
         //socket.emit('user message', msg);
     });
 });
