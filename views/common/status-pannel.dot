@@ -1,0 +1,16 @@
+<div class="span3">
+    <div class="well sidebar-nav">
+        欢迎回来,<%=it.user.name %>
+    </div>
+    <div class="well sidebar-nav">
+        <span class="label label-success">&nbsp;</span>
+        <span class="label label-success">&nbsp;</span>
+        <span class="label label-success">&nbsp;</span>
+        <span id="status"></span>
+    </div>
+    <!--
+    <div class="well sidebar-nav">
+
+    </div>
+    -->
+</div>

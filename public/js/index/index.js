@@ -20,7 +20,7 @@ $(function(){
 	// 	$("#status").html(message);
 	// });
 	
-
+    /*
 	$.get('/topic/list'
 		,function(data){
 			if(data && data.length > 0){
@@ -31,4 +31,5 @@ $(function(){
 		,null
 		,'json'
 	);
+	*/
 });

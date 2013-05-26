@@ -27,11 +27,6 @@ var app = express(),
 
 expressLayouts.register('ejs');
 
-doT.setGlobals({
-    layout: false,
-    partialCache: false
-});
-
 doT.setTemplateSettings({
     evaluate:    /\<\%([\s\S]+?\}?)\%\>/g,
     interpolate: /\<\%=([\s\S]+?)\%\>/g,
@@ -42,6 +37,11 @@ doT.setTemplateSettings({
     defineParams:/^\s*([\w$]+):([\s\S]+)/,
     conditional: /\<\%\?(\?)?\s*([\s\S]*?)\s*\%\>/g,
     iterate:     /\<\%~\s*(?:\%\>|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\%\>)/g
+});
+
+doT.setGlobals({
+    layout: false,
+    partialCache: false
 });
 
 app.configure(function () {//noinspection JSValidateTypes

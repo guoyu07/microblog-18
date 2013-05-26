@@ -1,0 +1,30 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">找Ta</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="active"><a href="/home">个人中心</a></li>
+                </ul>
+                <ul class="nav pull-right">
+                    <li class="active dropdown">
+                        <a id="personal-setting" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            data-target="#" href="#" >
+                            <%=it.user.name %><b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="personal-setting">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">个人信息设置</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li class="active"><a href="/logout">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

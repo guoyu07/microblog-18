@@ -9,7 +9,7 @@ module.exports = function(app){
 	console.log("load route " + __filename);
 
 	app.get('/', function(req, res){
-	  res.render('index.ejs', { title: '微博客', layout:'layout.ejs'});
+	  res.render('index.ejs', { title: '主页', layout:'layout.ejs'});
 	});
 
 	app.get('/reg', function(req, res){
@@ -32,7 +32,7 @@ module.exports = function(app){
 	app.get('/home', function(req, res){
 	  //console.log(util.inspect(req.socket.emit));
 	  if(null != req.session.user){
-	  	res.render("home.ejs", {title: '个人中心', layout: Constants.VIEW.LOGINED_USER});
+	  	res.render("home.dot", {layout:false, flash: req.flash, user: req.session.user});
 	  }else{
 	  	req.flash('error', '您尚未登录，请先登录');
 	  	res.redirect("/login");
@@ -41,7 +41,7 @@ module.exports = function(app){
 
 	app.post('/doLogin', function(req, res){
 	  if(null != req.session.user){
-	  	res.render("home.ejs", {title: '个人中心', layout: Constants.VIEW.LOGINED_USER});
+          res.render("home.dot", {layout:false, flash: req.flash, user: req.session.user});
 	  	return;
 	  }
 
