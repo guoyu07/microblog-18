@@ -11,7 +11,7 @@
                 <%#def.load('/views/common/status-pannel.dot')%>
                 <div class="span9">
                     <div class="row-fluid">
-                        <div class="navbar span8">
+                        <div class="navbar span8 home-navbar">
                             <div class="navbar-inner">
                                 <ul class="nav">
                                     <li><a href="#"><i class="icon-edit"></i>状态</a></li>
@@ -41,6 +41,7 @@
                                         </ul>
                                     </li>
                                     <li class="divider-vertical"></li>
+                                    <li><a href="#"><i class="icon-calendar"></i>活动</a></li>
                                 </ul>
                             </div>
                         </div>
